@@ -27,7 +27,7 @@ public class Inventory : MonoBehaviour {
 
 
     public void AddItemAmount(InventoryItemSO itemSO, int amountToAdd) {
-        int stackSlot = GetStackSlot(itemSO);
+        int stackSlot = GetStackSlot(itemSO);       
         if (stackSlot != -1) {
             int existingAmount = SlotArray[stackSlot].amount;
             int maxStackAmount = itemSO.GetMaxStackAmount();
@@ -53,7 +53,9 @@ public class Inventory : MonoBehaviour {
 
         for (int i = 0; i < inventorySize; i++) {
             if (SlotArray[i].itemSO == itemToCheck) {
-                return i;
+                if (SlotArray[i].amount < itemToCheck.GetMaxStackAmount()) {
+                    return i;
+                }
             }
         }
         return -1;
@@ -64,7 +66,7 @@ public class Inventory : MonoBehaviour {
         if (freeSlot == -1) {
             Debug.Log("no free slot");
             return;
-        }
+        } 
 
         int maxStackAmount = itemSO.GetMaxStackAmount();
         int toTransferAmount = Mathf.Min(maxStackAmount, amountToAdd);
@@ -76,14 +78,13 @@ public class Inventory : MonoBehaviour {
         OnInventoryUpdated?.Invoke();
 
         if (restAmount > 0) {
-            Debug.Log("rest " + restAmount);
             AddItemAmount(itemSO, restAmount);
         }
     }
 
     private int GetFreeSlot() {
         for (int i = 0; i < inventorySize; i++) {
-            if (SlotArray[i].itemSO == null) {
+            if (SlotArray[i].amount == 0) {
                 return i;
             }
         }
