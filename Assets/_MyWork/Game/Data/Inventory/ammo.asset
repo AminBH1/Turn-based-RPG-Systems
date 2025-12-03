@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65f617ded5daff14d9d4221a2ea2f98a, type: 3}
-  m_Name: Bow
+  m_Name: ammo
   m_EditorClassIdentifier: Assembly-CSharp::InventoryItemSO
   ID: 
   displayName: 
-  displayIcon: {fileID: 21300000, guid: dadaf540b9c10e147afc66e4ef9ec800, type: 3}
+  displayIcon: {fileID: 21300000, guid: 2b9ec26a85ce20d4b844b3e14f0a2913, type: 3}
   displayDescription: 
   isStackable: 1
   maxStackAmount: 4
