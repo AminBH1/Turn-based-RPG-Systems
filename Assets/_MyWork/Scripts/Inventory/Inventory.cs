@@ -95,7 +95,20 @@ public class Inventory : MonoBehaviour {
         return inventorySize;
     }
 
-    public InventoryItemSO GetItemSOInSlot(int slotIndex) {
+    public InventoryItemSO GetItemInSlot(int slotIndex) {
         return SlotArray[slotIndex].itemSO;
+    }
+
+    public void SetAmountInSlot(int amount, int slotIndex) {
+        SlotArray[slotIndex].amount = amount;
+        if (SlotArray[slotIndex].amount == 0) {
+            SlotArray[slotIndex].itemSO = null;
+        }
+        OnInventoryUpdated?.Invoke();
+    }
+
+    public void SetItemInSlot(InventoryItemSO item, int slotIndex) {
+        SlotArray[slotIndex].itemSO = item;
+        OnInventoryUpdated?.Invoke();
     }
 }
