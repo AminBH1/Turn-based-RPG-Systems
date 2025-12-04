@@ -9,6 +9,8 @@ public class DialogueNodeSO : ScriptableObject {
     [SerializeField] private List<string> childIDList = new List<string>();
     [SerializeField] private bool isPlayerSpeaking;
     [SerializeField] private Rect nodeRect = new Rect(0, 0, 200, 100);
+    [SerializeField] private string toTriggerAction;
+    [SerializeField] private Condition condition;
 
 
     public string GetNodeText() {
@@ -25,6 +27,14 @@ public class DialogueNodeSO : ScriptableObject {
 
     public Rect GetNodeRect() {
         return nodeRect;
+    }
+
+    public string GetToTriggerAction() {
+        return toTriggerAction;
+    }
+
+    public bool CheckCondition(IEnumerable<IPredicateEvaluator> predicateEvaluatorList) {
+        return condition.Check(predicateEvaluatorList);
     }
 
 

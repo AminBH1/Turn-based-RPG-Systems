@@ -16,13 +16,18 @@ MonoBehaviour:
   childIDList:
   - c4658374-8dd8-41a1-96b2-9a103828a310
   - 4d9b2147-f0b0-40f7-9e29-efb749240126
+  - 5edd63cc-bf2b-42f8-8a75-947bcf0f680a
   isPlayerSpeaking: 0
   nodeRect:
     serializedVersion: 2
-    x: 651.2
-    y: 135.20001
+    x: 524.80005
+    y: 104.80001
     width: 200
     height: 112.048004
+  toTriggerAction: 
+  condition:
+    and:
+    - or: []
 --- !u!114 &-7538382397399391761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45,6 +50,10 @@ MonoBehaviour:
     y: 256.80002
     width: 200
     height: 97.528
+  toTriggerAction: Test
+  condition:
+    and:
+    - or: []
 --- !u!114 &-5782450954758055198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,6 +77,10 @@ MonoBehaviour:
     y: 373.6
     width: 200
     height: 112.048004
+  toTriggerAction: 
+  condition:
+    and:
+    - or: []
 --- !u!114 &-4860142698056986366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,6 +104,10 @@ MonoBehaviour:
     y: 359.19998
     width: 200
     height: 112.048004
+  toTriggerAction: 
+  condition:
+    and:
+    - or: []
 --- !u!114 &-1376320794103912476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,6 +130,10 @@ MonoBehaviour:
     y: 488.8
     width: 200
     height: 112.048004
+  toTriggerAction: 
+  condition:
+    and:
+    - or: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +159,7 @@ MonoBehaviour:
   - {fileID: -4860142698056986366}
   - {fileID: 6085982383056685880}
   - {fileID: -1376320794103912476}
+  - {fileID: 2850733166213915185}
   newNodeOffsetPosition: {x: 0, y: 100}
 --- !u!114 &1180113891340597389
 MonoBehaviour:
@@ -157,10 +179,14 @@ MonoBehaviour:
   isPlayerSpeaking: 0
   nodeRect:
     serializedVersion: 2
-    x: 659.2
-    y: 16.800001
+    x: 468.8
+    y: -27.199999
     width: 200
     height: 97.528
+  toTriggerAction: 
+  condition:
+    and:
+    - or: []
 --- !u!114 &1860163669268609168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +209,10 @@ MonoBehaviour:
     y: 511.2
     width: 200
     height: 97.528
+  toTriggerAction: FirstObjective
+  condition:
+    and:
+    - or: []
 --- !u!114 &2494609167810657984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,6 +235,39 @@ MonoBehaviour:
     y: 503.19995
     width: 200
     height: 112.048004
+  toTriggerAction: SecondObjective
+  condition:
+    and:
+    - or: []
+--- !u!114 &2850733166213915185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b6a8c0df1d4b074582a57553a0308bc, type: 3}
+  m_Name: 5edd63cc-bf2b-42f8-8a75-947bcf0f680a
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueNodeSO
+  nodeText: finished quest
+  childIDList: []
+  isPlayerSpeaking: 1
+  nodeRect:
+    serializedVersion: 2
+    x: 611.2001
+    y: 260.80002
+    width: 200
+    height: 97.528
+  toTriggerAction: 
+  condition:
+    and:
+    - or:
+      - predicate: FinishedQuest
+        parametres:
+        - ed94403e-fba3-4aed-abb8-eeb909147175
+        negate: 0
 --- !u!114 &4035555690311447994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +290,10 @@ MonoBehaviour:
     y: 259.19998
     width: 200
     height: 97.528
+  toTriggerAction: 
+  condition:
+    and:
+    - or: []
 --- !u!114 &4976001563803914610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,6 +315,10 @@ MonoBehaviour:
     y: 611.2
     width: 200
     height: 112.048004
+  toTriggerAction: 
+  condition:
+    and:
+    - or: []
 --- !u!114 &6085982383056685880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,6 +343,10 @@ MonoBehaviour:
     y: 484.79996
     width: 200
     height: 112.048004
+  toTriggerAction: 
+  condition:
+    and:
+    - or: []
 --- !u!114 &6964354152913280576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,3 +368,7 @@ MonoBehaviour:
     y: 611.19995
     width: 200
     height: 112.048004
+  toTriggerAction: 
+  condition:
+    and:
+    - or: []

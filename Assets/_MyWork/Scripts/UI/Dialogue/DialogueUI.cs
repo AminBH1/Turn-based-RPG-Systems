@@ -8,6 +8,7 @@ public class DialogueUI : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI NPCNameText;
     [SerializeField] private TextMeshProUGUI NPCText;
     [SerializeField] private Button nextButton;
+    [SerializeField] private Button quitButton;
     [SerializeField] private Transform choicesRootUI;
     [SerializeField] private Transform choicePrefabUI;
 
@@ -17,6 +18,10 @@ public class DialogueUI : MonoBehaviour {
 
         nextButton.onClick.AddListener(() => {
             dialogueHandler.Next();
+        });
+
+        quitButton.onClick.AddListener(() => {
+            dialogueHandler.Quit();
         });
 
         DialogueHandler_OnDialogueUpdated();
