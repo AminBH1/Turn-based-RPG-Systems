@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class InteractionSystem : MonoBehaviour {
 
-    [SerializeField] private Player player;
+    private Player player;
 
     private void Awake() {
         player = GetComponent<Player>();

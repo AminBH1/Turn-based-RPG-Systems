@@ -22,7 +22,7 @@ public class DialogueHandler : MonoBehaviour {
         OnDialogueUpdated?.Invoke();
     }
 
-    private void Quit() {
+    public void Quit() {
         NPCSpeaker = null;
         currentNode = null;
         dialogueStarted = null;
@@ -40,7 +40,7 @@ public class DialogueHandler : MonoBehaviour {
     }
 
     public IEnumerable<DialogueNodeSO> GetChoiceNodeList() {
-        return dialogueStarted.GetChoiceNodeList(currentNode);
+        return FilterNodeListOnCondition(dialogueStarted.GetChoiceNodeList(currentNode));
     }
 
     public DialogueNodeSO GetCurrentNode() {
@@ -52,13 +52,14 @@ public class DialogueHandler : MonoBehaviour {
     }
 
     public bool HasNext() {
-        if (dialogueStarted.GetChildNodeList(currentNode).Count() == 0) {
+        if (FilterNodeListOnCondition(dialogueStarted.GetChildNodeList(currentNode)).Count() == 0) {
             return false;
         }
         return true;
     }
     public void SelectChoice(DialogueNodeSO choiceNode) {
         currentNode = choiceNode;
+        TriggerAction();
         isPlayerSpeaking = false;
         if (HasNext()) {
             Next();
@@ -70,8 +71,9 @@ public class DialogueHandler : MonoBehaviour {
     public void Next() {
         if (HasChoiceNode(currentNode)) return;
       
-        DialogueNodeSO nextNode = dialogueStarted.GetNPCNodeList(currentNode).ToArray()[0];
+        DialogueNodeSO nextNode = FilterNodeListOnCondition(dialogueStarted.GetNPCNodeList(currentNode)).ToArray()[0];
         currentNode = nextNode;
+        TriggerAction();
 
         if (HasChoiceNode(nextNode)) return;
 
@@ -79,12 +81,38 @@ public class DialogueHandler : MonoBehaviour {
     }
 
     private bool HasChoiceNode(DialogueNodeSO parentNode) {
-        if (dialogueStarted.GetChoiceNodeList(parentNode).Count() > 0) {
+        if (FilterNodeListOnCondition(dialogueStarted.GetChoiceNodeList(parentNode)).Count() > 0) {
             isPlayerSpeaking = true;
             OnDialogueUpdated?.Invoke();
-            Debug.Log(parentNode);
             return true;
         }
         return false;
+    }
+
+    private void TriggerAction() {
+        if (currentNode == null) {
+            return;
+        }
+
+        if (currentNode.GetToTriggerAction() == "") {
+            return;
+        }
+
+        if (NPCSpeaker.GetComponents<NPCSpeaker>() == null) {
+            return;
+        }
+
+        foreach (DialogueActionTrigger dialogueActionTrigger in NPCSpeaker.GetComponents<DialogueActionTrigger>()) {
+            dialogueActionTrigger.TriggerAction(currentNode.GetToTriggerAction());
+        }
+    }
+
+    private IEnumerable<DialogueNodeSO> FilterNodeListOnCondition(IEnumerable<DialogueNodeSO> nodeList) {
+        IEnumerable<IPredicateEvaluator> predicateEvaluatorList = GetComponents<IPredicateEvaluator>();
+        foreach (DialogueNodeSO node in nodeList) {
+            if (node.CheckCondition(predicateEvaluatorList)) {
+                yield return node;
+            }
+        }
     }
 }
