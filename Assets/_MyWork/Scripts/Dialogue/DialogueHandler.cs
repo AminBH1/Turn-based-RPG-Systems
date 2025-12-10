@@ -19,6 +19,7 @@ public class DialogueHandler : MonoBehaviour {
         this.NPCSpeaker = NPCSpeaker;
         currentNode = dialogueStarted.GetRootNode();
         isActiveDialogue = true;
+        if (HasChoiceNode(currentNode)) isPlayerSpeaking = true;
         OnDialogueUpdated?.Invoke();
     }
 

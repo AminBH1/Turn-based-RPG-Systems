@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Bow
   m_EditorClassIdentifier: Assembly-CSharp::InventoryItemSO
   ID: 
-  displayName: 
+  displayName: Bow
   displayIcon: {fileID: 21300000, guid: dadaf540b9c10e147afc66e4ef9ec800, type: 3}
   displayDescription: 
+  price: 20
   isStackable: 1
   maxStackAmount: 4
   pickupPrefab: {fileID: 893400237584177694, guid: 0eea3f52e9921db42900b5e6bfa80364, type: 3}
+  itemCategory: 1

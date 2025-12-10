@@ -7,21 +7,35 @@ public class InventoryItemSO : ScriptableObject {
     [SerializeField] private string displayName;
     [SerializeField] private Sprite displayIcon;
     [SerializeField] private string displayDescription;
+    [SerializeField] private float price;
     [SerializeField] private bool isStackable;
     [SerializeField] private int maxStackAmount;
     [SerializeField] private Transform pickupPrefab;
+    [SerializeField] private ItemCategory itemCategory;
 
+
+    public float GetPrice() {
+        return price;
+    }
+
+    public string GetDisplayName() {
+        return displayName;
+    }
 
     public Sprite GetDisplayIcon() {
         return displayIcon;
+    }
+
+    public int GetMaxStackAmount() {
+        return maxStackAmount;
     }
 
     public bool IsStackable() {
         return isStackable;
     }
 
-    public int GetMaxStackAmount() {
-        return maxStackAmount;
+    public ItemCategory GetCategory() {
+        return itemCategory;
     }
 
     public Pickup SpawnPickup(Transform parentTransform, int amount) {

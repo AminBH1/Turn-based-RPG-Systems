@@ -11,7 +11,7 @@ public class Pickup : MonoBehaviour, IInteractable {
     public void Interact(Player player) {
         inventory = player.transform.GetComponent<Inventory>();
 
-        inventory.AddItemAmount(inventoryItemSO, amount);
+       // inventory.AddItemAmount(inventoryItemSO, amount);
     }
 
     public void Setup(InventoryItemSO inventoryItemSO, int amount) {
